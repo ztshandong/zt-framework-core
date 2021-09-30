@@ -14,7 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -44,16 +43,31 @@ public class ZtSpringUtil implements BeanDefinitionRegistryPostProcessor, Applic
 
     public static ApplicationContext applicationContext;
 
-    public static Set<Class<?>> allClasses = new HashSet<>();
+    private static Set<Class<?>> allClasses = new HashSet<>();
 
-    public static Map<String, List<ZtEnumInfoEntity>> enumInfoMap = new HashMap<>();
+    public static Set<Class<?>> getAllClasses() {
+        return allClasses;
+    }
 
-    public static TreeMap<String, String> enumName = new TreeMap<>();
+    private static Map<String, List<ZtEnumInfoEntity>> enumInfoMap;
 
-    public static String springBootApplicationPackageName;
-
-    public List<ZtEnumInfoEntity> getEnumInfo(String enumName) {
+    public static List<ZtEnumInfoEntity> getEnumInfo(String enumName) {
         return enumInfoMap.get(enumName);
+    }
+
+    private static TreeMap<String, String> enumName;
+
+    public static TreeMap<String, String> getEnumName() {
+        if (enumName == null || enumInfoMap == null) {
+            initEnumInfos();
+        }
+        return enumName;
+    }
+
+    private static String springBootApplicationPackageName;
+
+    public static String getSpringBootApplicationPackageName() {
+        return springBootApplicationPackageName;
     }
 
     @Override
@@ -85,67 +99,73 @@ public class ZtSpringUtil implements BeanDefinitionRegistryPostProcessor, Applic
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         ZtSpringUtil.applicationContext = applicationContext;
+    }
 
-        Set<String> scanPackages = new HashSet<>();
+    private synchronized static void initEnumInfos() {
+        if (enumName == null || enumInfoMap == null) {
+            enumName = new TreeMap<>();
+            enumInfoMap = new HashMap<>();
+            Set<String> scanPackages = new HashSet<>();
 
-        Map<String, Object> beansWithAnnotation = applicationContext.getBeansWithAnnotation(ComponentScan.class);
-        Class<? extends Object> clazz = null;
-        for (Map.Entry<String, Object> entry : beansWithAnnotation.entrySet()) {
-            clazz = entry.getValue().getClass();
-            if (clazz.getName().contains("spring")) {
-                continue;
-            }
-            ComponentScan annotation = clazz.getAnnotation(ComponentScan.class);
-            if (annotation != null) {
-                String[] strings = annotation.basePackages();
-                scanPackages.addAll(Arrays.asList(strings));
-                System.out.println();
-            }
-        }
-        Map<String, Object> beansWithAnnotation1 = applicationContext.getBeansWithAnnotation(SpringBootApplication.class);
-        for (Map.Entry<String, Object> entry : beansWithAnnotation1.entrySet()) {
-            clazz = entry.getValue().getClass();
-            String name = clazz.getPackage().getName();
-            springBootApplicationPackageName = name;
-            scanPackages.add(name);
-        }
-
-        try {
-            for (String scanPackage : scanPackages) {
-                allClasses.addAll(ZtClassUtils.getClassSet(scanPackage));
-            }
-
-            for (Class<?> aClass : allClasses) {
-                if (!aClass.isEnum()) {
+            Map<String, Object> beansWithAnnotation = applicationContext.getBeansWithAnnotation(ComponentScan.class);
+            Class<? extends Object> clazz = null;
+            for (Map.Entry<String, Object> entry : beansWithAnnotation.entrySet()) {
+                clazz = entry.getValue().getClass();
+                if (clazz.getName().contains("spring")) {
                     continue;
                 }
-                Class<?>[] enumInterfaces = aClass.getInterfaces();
-                List<Class<?>> tmp = new ArrayList<Class<?>>(Arrays.asList(enumInterfaces));
-                if (!tmp.contains(IZtBaseEnum.class)) {
-                    continue;
-                }
-                Method getName = aClass.getMethod("name");
-                Method getIntValue = aClass.getMethod("getIntValue");
-                Method getStrValue = aClass.getMethod("getStrValue");
-                Object[] enumConstants = aClass.getEnumConstants();
-                List<ZtEnumInfoEntity> ztEnumInfoEntityList = new LinkedList<>();
-                for (Object enumConstant : enumConstants) {
-                    ZtEnumInfoEntity ztEnumInfoEntity = new ZtEnumInfoEntity();
-                    ztEnumInfoEntity.setValue(getName.invoke(enumConstant).toString());
-                    ztEnumInfoEntity.setLabel(getStrValue.invoke(enumConstant).toString());
-                    ztEnumInfoEntity.setEnumIntValue(Integer.valueOf(getIntValue.invoke(enumConstant).toString()));
-                    ztEnumInfoEntityList.add(ztEnumInfoEntity);
-                }
-                enumInfoMap.put(aClass.getSimpleName(), ztEnumInfoEntityList);
-                ModuleName annotation = aClass.getAnnotation(ModuleName.class);
-                String des = aClass.getSimpleName();
+                ComponentScan annotation = clazz.getAnnotation(ComponentScan.class);
                 if (annotation != null) {
-                    des = annotation.value();
+                    String[] strings = annotation.basePackages();
+                    scanPackages.addAll(Arrays.asList(strings));
+                    System.out.println();
                 }
-                enumName.put(aClass.getSimpleName(), des);
             }
-        } catch (Exception e) {
+            Map<String, Object> beansWithAnnotation1 = applicationContext.getBeansWithAnnotation(SpringBootApplication.class);
+            for (Map.Entry<String, Object> entry : beansWithAnnotation1.entrySet()) {
+                clazz = entry.getValue().getClass();
+                String name = clazz.getPackage().getName();
+                springBootApplicationPackageName = name;
+                scanPackages.add(name);
+            }
 
+            try {
+                for (String scanPackage : scanPackages) {
+                    allClasses.addAll(ZtClassUtils.getClassSet(scanPackage));
+                }
+
+                for (Class<?> aClass : allClasses) {
+                    if (!aClass.isEnum()) {
+                        continue;
+                    }
+                    Class<?>[] enumInterfaces = aClass.getInterfaces();
+                    List<Class<?>> tmp = new ArrayList<Class<?>>(Arrays.asList(enumInterfaces));
+                    if (!tmp.contains(IZtBaseEnum.class)) {
+                        continue;
+                    }
+                    Method getName = aClass.getMethod("name");
+                    Method getIntValue = aClass.getMethod("getIntValue");
+                    Method getStrValue = aClass.getMethod("getStrValue");
+                    Object[] enumConstants = aClass.getEnumConstants();
+                    List<ZtEnumInfoEntity> ztEnumInfoEntityList = new LinkedList<>();
+                    for (Object enumConstant : enumConstants) {
+                        ZtEnumInfoEntity ztEnumInfoEntity = new ZtEnumInfoEntity();
+                        ztEnumInfoEntity.setValue(getName.invoke(enumConstant).toString());
+                        ztEnumInfoEntity.setLabel(getStrValue.invoke(enumConstant).toString());
+                        ztEnumInfoEntity.setEnumIntValue(Integer.valueOf(getIntValue.invoke(enumConstant).toString()));
+                        ztEnumInfoEntityList.add(ztEnumInfoEntity);
+                    }
+                    enumInfoMap.put(aClass.getSimpleName(), ztEnumInfoEntityList);
+                    ModuleName annotation = aClass.getAnnotation(ModuleName.class);
+                    String des = aClass.getSimpleName();
+                    if (annotation != null) {
+                        des = annotation.value();
+                    }
+                    enumName.put(aClass.getSimpleName(), des);
+                }
+            } catch (Exception e) {
+
+            }
         }
     }
 
