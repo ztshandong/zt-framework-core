@@ -52,6 +52,9 @@ public class ZtSpringUtil implements BeanDefinitionRegistryPostProcessor, Applic
     private static Map<String, List<ZtEnumInfoEntity>> enumInfoMap;
 
     public static List<ZtEnumInfoEntity> getEnumInfo(String enumName) {
+        if (enumName == null || enumInfoMap == null) {
+            initEnumInfos();
+        }
         return enumInfoMap.get(enumName);
     }
 
