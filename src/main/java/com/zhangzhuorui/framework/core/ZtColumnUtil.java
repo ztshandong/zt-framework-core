@@ -2,6 +2,9 @@ package com.zhangzhuorui.framework.core;
 
 import java.lang.invoke.SerializedLambda;
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
 
 /**
  * @author :  张涛 zhangtao
@@ -13,6 +16,7 @@ import java.lang.reflect.Method;
  * @updateRemark :
  */
 public class ZtColumnUtil {
+
     public static <T> String getFieldName(ZtPropertyFunc<T, ?> func) {
         try {
             // 通过获取对象方法，判断是否存在该方法
@@ -25,6 +29,24 @@ public class ZtColumnUtil {
         } catch (ReflectiveOperationException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * 根据某个属性去重
+     *
+     * @param keyExtractor :
+     * @return :  java.util.function.Predicate<T>
+     * @author :  zhangtao
+     * @createDate :  2021/10/2 下午3:08
+     * @description :
+     * newList = list.stream().filter(ZtColumnUtil.distinctByKey(ZtRoleInfo::getThisCode)).collect(Collectors.toList());
+     * @updateUser :
+     * @updateDate :
+     * @updateRemark :
+     */
+    public static <T> Predicate<T> distinctByKey(ZtPropertyFunc<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 
     private static String resolveFieldName(String getMethodName) {
@@ -40,7 +62,7 @@ public class ZtColumnUtil {
     private static String firstToLowerCase(String param) {
         if ("".equals(param)) {
 //            if (StringUtils.isBlank(param)) {
-            return "" ;
+            return "";
         }
         return param.substring(0, 1).toLowerCase() + param.substring(1);
     }
