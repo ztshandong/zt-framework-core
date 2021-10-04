@@ -25,7 +25,7 @@ public class ZtQueryConditionEntity implements Serializable {
 
     private ZtQueryWrapperEnum queryWrapper = ZtQueryWrapperEnum.EQUALS;
 
-    //IN查询条件用。可能是list，也可能是ZtQueryWrapper
+    //IN查询条件用。可能是list，也可能是ZtQueryWrapper，也可能是一个包含最终数据的字符串
     private Object list;
 
     //BETWEEN查询

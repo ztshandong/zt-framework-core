@@ -52,4 +52,6 @@ public class ZtStrUtils {
     public static final String MAX_PAGE = "1000";//默认最大每页1000条
     public static final Integer NO_COUNT = -1;
 
+    public static final String FALSE_SQL = " NULL AND NOT NULL ";
+
 }

@@ -1,5 +1,8 @@
 package com.zhangzhuorui.framework.core;
 
+import com.alibaba.fastjson.JSON;
+import org.springframework.util.StringUtils;
+
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -69,5 +72,13 @@ public class ZtUtils {
             tempClass = tempClass.getSuperclass(); //得到父类,然后赋给自己
         }
         return fieldList;
+    }
+
+    public static String getSqlInStr(List<String> list) {
+        String str = JSON.toJSONString(list).replace("\"", "'").replace("[", "").replace("]", "").replace(" ", "");
+        if (StringUtils.isEmpty(str)) {
+            str = ZtStrUtils.FALSE_SQL;
+        }
+        return str;
     }
 }
