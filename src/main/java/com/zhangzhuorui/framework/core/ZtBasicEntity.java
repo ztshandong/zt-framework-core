@@ -2,6 +2,7 @@ package com.zhangzhuorui.framework.core;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -50,15 +51,17 @@ public class ZtBasicEntity<T extends Serializable> implements Serializable {
 
     private Long limit;
 
+    private String orderBy;
+
+    private Boolean ascFlag;
+
+    private Boolean dataScopeFlag;
+
     private Object queryHelper;
 
     private Object otherParams;
 
     private List otherListParams;
-
-    private String orderBy;
-
-    private Boolean ascFlag = true;
 
     // @ApiModelProperty(va(value = "自增主键(自增主键新增不用传)")
     @JsonProperty(value = "id")
@@ -194,6 +197,22 @@ public class ZtBasicEntity<T extends Serializable> implements Serializable {
 
     public void setAscFlag(Boolean ascFlag) {
         this.ascFlag = ascFlag;
+    }
+
+    /**
+     * 是否需要添加数据权限的控制。这个不能由前端控制，所以序列化忽略
+     * 如果查询条件中有多个相同entity的QueryWrapper，不用每个都加
+     *
+     * @return
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    public Boolean getDataScopeFlag() {
+        return dataScopeFlag;
+    }
+
+    public void setDataScopeFlag(Boolean dataScopeFlag) {
+        this.dataScopeFlag = dataScopeFlag;
     }
 
     // @ApiModelProperty(va(value = "开始时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)")
