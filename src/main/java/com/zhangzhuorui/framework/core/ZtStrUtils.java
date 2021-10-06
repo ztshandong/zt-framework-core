@@ -44,6 +44,7 @@ public class ZtStrUtils {
 
     public static final String REFRESH_CACHE = DELEMITER + "refresh";
     public static final String REFRESH_CACHE_BY_NAME = DELEMITER + "refreshByName";
+    public static final String REFRESH_CACHE_BY_CUR_USER_ID = DELEMITER + "refreshCacheByCurUserId";
     //endregion
 
     //默认分页信息
