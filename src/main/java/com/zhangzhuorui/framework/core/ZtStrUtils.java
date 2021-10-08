@@ -18,9 +18,9 @@ public class ZtStrUtils {
     public static final String MSG = "message";
     public static final String DATA = "data";
     public static final String SUCCESS = "success";
-    public static final String SUCCESS_CODE = "OK";
+    public static final String SUCCESS_CODE = "200";
     public static final String SUCCESS_MSG = "操作成功";
-    public static final String FAIL_CODE = "FAIL";
+    public static final String FAIL_CODE = "-1";
     public static final String FAIL_MSG = "操作失败，请刷新页面，获取最新数据后重试";
     //endregion
 
