@@ -48,6 +48,14 @@ public class ZtUtils {
         return res;
     }
 
+    public static boolean isEmptyList(List list) {
+        if (list == null) {
+            return true;
+        } else {
+            return list.isEmpty();
+        }
+    }
+
     public static Field getField(Object obj, String fieldName) {
         List<Field> fields = getFields(obj);
         Optional<Field> any = fields.stream().filter(t -> t.getName().equals(fieldName)).findAny();
