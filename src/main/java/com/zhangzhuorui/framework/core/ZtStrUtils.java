@@ -1,5 +1,14 @@
 package com.zhangzhuorui.framework.core;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author :  张涛 zhangtao
  * @version :  1.0
@@ -55,4 +64,66 @@ public class ZtStrUtils {
 
     public static final String FALSE_SQL = " NULL AND NOT NULL ";
 
+    public static final Map<Class<?>, Class<?>> WRAPPER_PRIMITIVE_MAP = new ConcurrentHashMap<>(8);
+
+    static {
+        WRAPPER_PRIMITIVE_MAP.put(Boolean.class, boolean.class);
+        WRAPPER_PRIMITIVE_MAP.put(Byte.class, byte.class);
+        WRAPPER_PRIMITIVE_MAP.put(Character.class, char.class);
+        WRAPPER_PRIMITIVE_MAP.put(Double.class, double.class);
+        WRAPPER_PRIMITIVE_MAP.put(Float.class, float.class);
+        WRAPPER_PRIMITIVE_MAP.put(Integer.class, int.class);
+        WRAPPER_PRIMITIVE_MAP.put(Long.class, long.class);
+        WRAPPER_PRIMITIVE_MAP.put(Short.class, short.class);
+        WRAPPER_PRIMITIVE_MAP.put(String.class, String.class);
+    }
+
+    public static StringBuilder getSignOriStr(JSONObject jsonObject) {
+        StringBuilder sb = new StringBuilder();
+        return getSignOriStr(jsonObject, sb);
+    }
+
+    public static StringBuilder getSignOriStr(JSONObject jsonObject, StringBuilder sb) {
+        if (sb == null) {
+            sb = new StringBuilder();
+        }
+        ArrayList<String> keySet = new ArrayList<>(jsonObject.keySet());
+        Collections.sort(keySet);
+        for (String key : keySet) {
+            if ("sign".equals(key)) {
+                continue;
+            }
+            Object obj = jsonObject.get(key);
+            // if (sb.toString().length() > 0 && sb.toString().lastIndexOf("{") != sb.toString().length() - 1 && sb.toString().lastIndexOf("[") != sb.toString().length() - 1) {
+            //     sb.append("&");
+            // }
+            sb.append(key);
+            // sb.append("=");
+            if (obj.getClass().isPrimitive() || WRAPPER_PRIMITIVE_MAP.containsKey(obj.getClass())) {
+                sb.append(obj);
+            } else if (obj instanceof List) {
+                List tmpList = (List) obj;
+                Object tmpObj = tmpList.get(0);
+                if (tmpObj.getClass().isPrimitive() || WRAPPER_PRIMITIVE_MAP.containsKey(tmpObj.getClass())) {
+                    // Collections.sort(tmpList);
+                    sb.append(JSON.toJSONString(tmpList));
+                } else {
+                    // sb.append("[");
+                    for (Object innerObj : tmpList) {
+                        JSONObject innerJsonObj = JSONObject.parseObject(JSON.toJSONString(innerObj));
+                        // sb.append("{");
+                        getSignOriStr(innerJsonObj, sb);
+                        // sb.append("}");
+                    }
+                    // sb.append("]");
+                }
+            } else {
+                JSONObject jsonObj = JSONObject.parseObject(JSON.toJSONString(obj));
+                // sb.append("{");
+                getSignOriStr(jsonObj, sb);
+                // sb.append("}");
+            }
+        }
+        return sb;
+    }
 }
