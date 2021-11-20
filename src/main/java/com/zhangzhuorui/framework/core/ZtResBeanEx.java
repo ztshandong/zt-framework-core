@@ -13,6 +13,14 @@ import java.util.HashMap;
  */
 public class ZtResBeanEx<T> extends HashMap {
 
+    public ZtResBeanExResult getResult() {
+        return (ZtResBeanExResult) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getResult());
+    }
+
+    public ZtResBeanEx() {
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getResult(), new ZtResBeanExResult());
+    }
+
     public static ZtResBeanEx ok() {
         ZtResBeanEx res = new ZtResBeanEx();
         res.setCode(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccessCode());
@@ -79,42 +87,85 @@ public class ZtResBeanEx<T> extends HashMap {
     }
 
     public Boolean getEmpty() {
-        return (Boolean) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty());
+        return (Boolean) this.getResult().get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty());
     }
 
     public void setEmpty(Boolean empty) {
-        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty(), empty);
+        this.getResult().put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty(), empty);
     }
 
     public Integer getTotal() {
-        return (Integer) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal());
+        return (Integer) this.getResult().get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal());
     }
 
     public void setTotal(Integer total) {
-        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal(), total);
+        this.getResult().put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal(), total);
     }
 
     public Object getCode() {
-        return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode());
+        return this.getResult().get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode());
     }
 
     public void setCode(String code) {
-        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode(), code);
+        this.getResult().put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode(), code);
     }
 
     public Object getMsg() {
-        return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg());
+        return this.getResult().get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg());
     }
 
     public void setMsg(String msg) {
-        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg(), msg);
+        this.getResult().put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg(), msg);
     }
 
     public Object getData() {
-        return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData());
+        return this.getResult().get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData());
     }
 
     public void setData(Object data) {
-        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData(), data);
+        this.getResult().put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData(), data);
+    }
+
+    public class ZtResBeanExResult<T> extends HashMap {
+
+        public Boolean getEmpty() {
+            return (Boolean) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty());
+        }
+
+        public void setEmpty(Boolean empty) {
+            this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty(), empty);
+        }
+
+        public Integer getTotal() {
+            return (Integer) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal());
+        }
+
+        public void setTotal(Integer total) {
+            this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal(), total);
+        }
+
+        public Object getCode() {
+            return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode());
+        }
+
+        public void setCode(String code) {
+            this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode(), code);
+        }
+
+        public Object getMsg() {
+            return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg());
+        }
+
+        public void setMsg(String msg) {
+            this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg(), msg);
+        }
+
+        public Object getData() {
+            return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData());
+        }
+
+        public void setData(Object data) {
+            this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData(), data);
+        }
     }
 }

@@ -15,14 +15,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "resbean.config")
 public class ZtResBeanExConfig {
-
-    private String code = "code";
+    //key
+    private String code = "errCode";
     private String empty = "empty";
     private String total = "total";
-    private String msg = "message";
-    private String data = "data";
+    private String msg = "errMsg";
     private String success = "success";
-    private String successCode = "200";
+    private String result = "result";
+    private String data = "data";
+    //value
+    private String successCode = "0";
     private String successMsg = "操作成功";
     private String failCode = "-1";
     private String failMsg = "操作失败，请刷新页面，获取最新数据后重试";
@@ -60,6 +62,14 @@ public class ZtResBeanExConfig {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public String getData() {
