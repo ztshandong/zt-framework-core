@@ -20,18 +20,25 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ZtStrUtils {
 
+    //使用配置文件
     //region 返回的状态码
-    public static final String CODE = "code";
-    public static final String EMPTY = "empty";
-    public static final String TOTAL = "total";
-    public static final String MSG = "message";
-    public static final String DATA = "data";
-    public static final String SUCCESS = "success";
-    public static final String SUCCESS_CODE = "200";
-    public static final String SUCCESS_MSG = "操作成功";
-    public static final String FAIL_CODE = "-1";
-    public static final String FAIL_MSG = "操作失败，请刷新页面，获取最新数据后重试";
+    // public static final String CODE = "code";
+    // public static final String EMPTY = "empty";
+    // public static final String TOTAL = "total";
+    // public static final String MSG = "message";
+    // public static final String DATA = "data";
+    // public static final String SUCCESS = "success";
+    // public static final String SUCCESS_CODE = "200";
+    // public static final String SUCCESS_MSG = "操作成功";
+    // public static final String FAIL_CODE = "-1";
+    // public static final String FAIL_MSG = "操作失败，请刷新页面，获取最新数据后重试";
     //endregion
+
+    //默认分页信息
+    // public static final String START = "1";//start  current
+    // public static final String LIMIT = "20";//limit  size
+    // public static final String MAX_PAGE = "1000";//默认最大每页1000条
+    public static final Integer NO_COUNT = -1;
 
     public static final String ID_FIELD_NAME = "id";
     public static final String ID_COLUMN_NAME = "id";
@@ -55,12 +62,6 @@ public class ZtStrUtils {
     public static final String REFRESH_CACHE_BY_NAME = DELEMITER + "refreshByName";
     public static final String REFRESH_CACHE_BY_CUR_USER_ID = DELEMITER + "refreshCacheByCurUserId";
     //endregion
-
-    //默认分页信息
-    public static final String START = "1";//start  current
-    public static final String LIMIT = "20";//limit  size
-    public static final String MAX_PAGE = "1000";//默认最大每页1000条
-    public static final Integer NO_COUNT = -1;
 
     public static final String FALSE_SQL = " NULL AND NOT NULL ";
 

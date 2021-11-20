@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.zhangzhuorui.framework.core.ZtSpringUtil
+com.zhangzhuorui.framework.core.ZtSpringUtil,\
+com.zhangzhuorui.framework.core.ZtResBeanExConfig

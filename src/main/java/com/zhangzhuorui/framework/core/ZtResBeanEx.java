@@ -15,16 +15,16 @@ public class ZtResBeanEx<T> extends HashMap {
 
     public static ZtResBeanEx ok() {
         ZtResBeanEx res = new ZtResBeanEx();
-        res.setCode(ZtStrUtils.SUCCESS_CODE);
-        res.setMsg(ZtStrUtils.SUCCESS_MSG);
+        res.setCode(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccessCode());
+        res.setMsg(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccessMsg());
         res.setSuccess(true);
         return res;
     }
 
     public static ZtResBeanEx ok(Object o) {
         ZtResBeanEx res = new ZtResBeanEx();
-        res.setCode(ZtStrUtils.SUCCESS_CODE);
-        res.setMsg(ZtStrUtils.SUCCESS_MSG);
+        res.setCode(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccessCode());
+        res.setMsg(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccessMsg());
         res.setData(o);
         res.setSuccess(true);
         return res;
@@ -32,7 +32,7 @@ public class ZtResBeanEx<T> extends HashMap {
 
     public static ZtResBeanEx ok(String msg) {
         ZtResBeanEx res = new ZtResBeanEx();
-        res.setCode(ZtStrUtils.SUCCESS_CODE);
+        res.setCode(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccessCode());
         res.setMsg(msg);
         res.setSuccess(true);
         return res;
@@ -48,15 +48,15 @@ public class ZtResBeanEx<T> extends HashMap {
 
     public static ZtResBeanEx error() {
         ZtResBeanEx res = new ZtResBeanEx();
-        res.setCode(ZtStrUtils.FAIL_CODE);
-        res.setMsg(ZtStrUtils.FAIL_MSG);
+        res.setCode(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getFailCode());
+        res.setMsg(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getFailMsg());
         res.setSuccess(false);
         return res;
     }
 
     public static ZtResBeanEx error(String msg) {
         ZtResBeanEx res = new ZtResBeanEx();
-        res.setCode(ZtStrUtils.FAIL_CODE);
+        res.setCode(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getFailCode());
         res.setMsg(msg);
         res.setSuccess(false);
         return res;
@@ -71,50 +71,50 @@ public class ZtResBeanEx<T> extends HashMap {
     }
 
     public Boolean getSuccess() {
-        return (Boolean) this.get(ZtStrUtils.SUCCESS);
+        return (Boolean) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccess());
     }
 
     public void setSuccess(Boolean success) {
-        this.put(ZtStrUtils.SUCCESS, success);
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getSuccess(), success);
     }
 
     public Boolean getEmpty() {
-        return (Boolean) this.get(ZtStrUtils.EMPTY);
+        return (Boolean) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty());
     }
 
     public void setEmpty(Boolean empty) {
-        this.put(ZtStrUtils.EMPTY, empty);
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getEmpty(), empty);
     }
 
     public Integer getTotal() {
-        return (Integer) this.get(ZtStrUtils.TOTAL);
+        return (Integer) this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal());
     }
 
     public void setTotal(Integer total) {
-        this.put(ZtStrUtils.TOTAL, total);
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getTotal(), total);
     }
 
     public Object getCode() {
-        return this.get(ZtStrUtils.CODE);
+        return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode());
     }
 
     public void setCode(String code) {
-        this.put(ZtStrUtils.CODE, code);
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getCode(), code);
     }
 
     public Object getMsg() {
-        return this.get(ZtStrUtils.MSG);
+        return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg());
     }
 
     public void setMsg(String msg) {
-        this.put(ZtStrUtils.MSG, msg);
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getMsg(), msg);
     }
 
     public Object getData() {
-        return this.get(ZtStrUtils.DATA);
+        return this.get(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData());
     }
 
     public void setData(Object data) {
-        this.put(ZtStrUtils.DATA, data);
+        this.put(ZtSpringUtil.getBeanFactory().getBean(ZtResBeanExConfig.class).getData(), data);
     }
 }
