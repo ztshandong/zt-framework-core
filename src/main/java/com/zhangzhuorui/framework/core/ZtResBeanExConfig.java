@@ -143,4 +143,5 @@ public class ZtResBeanExConfig {
     public void setMaxPage(String maxPage) {
         this.maxPage = maxPage;
     }
+
 }

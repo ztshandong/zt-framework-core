@@ -1,6 +1,6 @@
 package com.zhangzhuorui.framework.core;
 
-import com.sun.tracing.dtrace.ModuleName;
+import io.swagger.annotations.ApiModel;
 import org.springframework.aop.framework.AdvisedSupport;
 import org.springframework.aop.framework.AopProxy;
 import org.springframework.aop.support.AopUtils;
@@ -14,6 +14,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -159,10 +160,14 @@ public class ZtSpringUtil implements BeanDefinitionRegistryPostProcessor, Applic
                         ztEnumInfoEntityList.add(ztEnumInfoEntity);
                     }
                     enumInfoMap.put(aClass.getSimpleName(), ztEnumInfoEntityList);
-                    ModuleName annotation = aClass.getAnnotation(ModuleName.class);
+                    ApiModel annotation = aClass.getAnnotation(ApiModel.class);
+                    // ModuleName annotation = aClass.getAnnotation(ModuleName.class);
                     String des = aClass.getSimpleName();
                     if (annotation != null) {
                         des = annotation.value();
+                        if (StringUtils.isEmpty(des)) {
+                            des = annotation.description();
+                        }
                     }
                     enumName.put(aClass.getSimpleName(), des);
                 }
