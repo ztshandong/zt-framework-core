@@ -19,7 +19,7 @@ public class ZtResBeanExList4Swagger {
 
     ZtResBeanExResultList4Swagger result;
 
-    @ApiModelProperty(value = "执行结果", example = "true")
+    @ApiModelProperty(value = "执行结果，如果是true还要配合errCode判断", example = "true")
     @JsonProperty(value = "success")
     @JSONField(name = "success")
     public Boolean getSuccess() {

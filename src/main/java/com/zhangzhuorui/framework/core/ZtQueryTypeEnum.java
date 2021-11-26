@@ -1,6 +1,6 @@
 package com.zhangzhuorui.framework.core;
 
-import com.sun.tracing.dtrace.ModuleName;
+import io.swagger.annotations.ApiModel;
 
 /**
  * @author :  张涛 zhangtao
@@ -11,7 +11,8 @@ import com.sun.tracing.dtrace.ModuleName;
  * @updateDate :
  * @updateRemark :
  */
-@ModuleName("SQL条件结合类型")
+// @ModuleName("SQL条件结合类型")
+@ApiModel(value = "SQL条件结合类型", description = "SQL条件结合类型")
 public enum ZtQueryTypeEnum implements IZtBaseEnum<ZtQueryTypeEnum> {
 
     AND(1, "AND"),

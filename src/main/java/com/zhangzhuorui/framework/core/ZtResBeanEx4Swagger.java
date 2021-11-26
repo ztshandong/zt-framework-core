@@ -13,11 +13,11 @@ import io.swagger.annotations.ApiModelProperty;
  * @updateDate :
  * @updateRemark :
  */
-public class ZtResBeanExObj4Swagger {
+public class ZtResBeanEx4Swagger {
 
     Boolean success;
 
-    ZtResBeanExResultObj4Swagger result;
+    ZtResBeanExResult4Swagger result;
 
     @ApiModelProperty(value = "执行结果，如果是true还要配合errCode判断", example = "true")
     @JsonProperty(value = "success")
@@ -33,15 +33,15 @@ public class ZtResBeanExObj4Swagger {
     @ApiModelProperty(value = "返回的数据")
     @JsonProperty(value = "result")
     @JSONField(name = "result")
-    public ZtResBeanExResultObj4Swagger getResult() {
+    public ZtResBeanExResult4Swagger getResult() {
         return result;
     }
 
-    public void setResult(ZtResBeanExResultObj4Swagger result) {
+    public void setResult(ZtResBeanExResult4Swagger result) {
         this.result = result;
     }
 
-    static class ZtResBeanExResultObj4Swagger {
+    static class ZtResBeanExResult4Swagger {
 
         String errCode;
 
@@ -49,7 +49,7 @@ public class ZtResBeanExObj4Swagger {
 
         Boolean empty;
 
-        ZtBasicNumberIdEntity4Swagger data;
+        Object data;
 
         @ApiModelProperty(value = "0代表正常(可能是字符串也可能是数值类型)，其余代表有错误", example = "0")
         @JsonProperty(value = "errCode")
@@ -84,14 +84,14 @@ public class ZtResBeanExObj4Swagger {
             this.empty = empty;
         }
 
-        @ApiModelProperty(value = "返回对象时的数据结构。例如根据id获取详情接口selectIdSimple")
+        @ApiModelProperty(value = "返回的数据结构")
         @JsonProperty(value = "data")
         @JSONField(name = "data")
-        public ZtBasicNumberIdEntity4Swagger getData() {
+        public Object getData() {
             return data;
         }
 
-        public void setData(ZtBasicNumberIdEntity4Swagger data) {
+        public void setData(Object data) {
             this.data = data;
         }
 

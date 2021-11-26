@@ -1,6 +1,6 @@
 package com.zhangzhuorui.framework.core;
 
-import com.sun.tracing.dtrace.ModuleName;
+import io.swagger.annotations.ApiModel;
 
 /**
  * @author :  张涛 zhangtao
@@ -11,7 +11,8 @@ import com.sun.tracing.dtrace.ModuleName;
  * @updateDate :
  * @updateRemark :
  */
-@ModuleName("SQL查询符号")
+// @ModuleName("SQL查询符号")
+@ApiModel(value = "SQL查询符号", description = "SQL查询符号")
 public enum ZtQueryWrapperEnum implements IZtBaseEnum<ZtQueryWrapperEnum> {
     EQUALS(1, "="),
     NOT_EQUALS(2, "<>"),
