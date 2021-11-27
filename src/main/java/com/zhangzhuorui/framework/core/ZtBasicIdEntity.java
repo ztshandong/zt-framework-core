@@ -19,7 +19,7 @@ public class ZtBasicIdEntity<T extends Serializable> implements Serializable {
 
     private T id;
 
-    @ApiModelProperty(value = "主键(自增主键新增不用传)", example = "1")
+    @ApiModelProperty(value = "主键(自增主键新增不用传)", example = "1", position = -1)
     @JsonProperty(value = "id")
     @JSONField(name = "id")
     public T getId() {

@@ -65,7 +65,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
 
     private Boolean ascFlag;
 
-    @ApiModelProperty(value = "创建时间(不用传,后台自动生成)", example = "1982-10-24 20:48:00")
+    @ApiModelProperty(value = "创建时间(不用传,后台自动生成)", example = "1982-10-24 20:48:00", position = 1000)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "gmtCreate")
@@ -78,7 +78,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.gmtCreate = gmtCreate;
     }
 
-    @ApiModelProperty(value = "创建人账号(不用传,根据token获取)", example = "zhangsan")
+    @ApiModelProperty(value = "创建人账号(不用传,根据token获取)", example = "zhangsan", position = 1100)
     @JsonProperty(value = "createdBy")
     @JSONField(name = "createdBy")
     public String getCreatedBy() {
@@ -89,7 +89,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.createdBy = createdBy;
     }
 
-    @ApiModelProperty(value = "创建人姓名(不用传,根据token获取)", example = "张三")
+    @ApiModelProperty(value = "创建人姓名(不用传,根据token获取)", example = "张三", position = 1200)
     @JsonProperty(value = "createdByName")
     @JSONField(name = "createdByName")
     public String getCreatedByName() {
@@ -100,7 +100,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.createdByName = createdByName;
     }
 
-    @ApiModelProperty(value = "单据修改时间(不用传,后台自动生成)", example = "1982-10-24 20:48:00")
+    @ApiModelProperty(value = "单据修改时间(不用传,后台自动生成)", example = "1982-10-24 20:48:00", position = 1300)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "gmtUpdate")
@@ -113,7 +113,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.gmtUpdate = gmtUpdate;
     }
 
-    @ApiModelProperty(value = "修改人账号(不用传,根据token获取)", example = "zhangsan")
+    @ApiModelProperty(value = "修改人账号(不用传,根据token获取)", example = "zhangsan", position = 1400)
     @JsonProperty(value = "updatedBy")
     @JSONField(name = "updatedBy")
     public String getUpdatedBy() {
@@ -124,7 +124,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.updatedBy = updatedBy;
     }
 
-    @ApiModelProperty(value = "修改人姓名(不用传,根据token获取)", example = "张三")
+    @ApiModelProperty(value = "修改人姓名(不用传,根据token获取)", example = "张三", position = 1500)
     @JsonProperty(value = "updatedByName")
     @JSONField(name = "updatedByName")
     public String getUpdatedByName() {
@@ -135,7 +135,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.updatedByName = updatedByName;
     }
 
-    @ApiModelProperty(value = "备注", example = "天行健，君子以自强不息")
+    @ApiModelProperty(value = "备注", example = "天行健，君子以自强不息", position = 1600)
     @JsonProperty(value = "remark")
     @JSONField(name = "remark")
     public String getRemark() {
@@ -162,7 +162,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.dataScopeFlag = dataScopeFlag;
     }
 
-    @ApiModelProperty(value = "不同的界面，可以返回不同的字段。优化用，默认返回所有字段", example = "user/index")
+    @ApiModelProperty(value = "不同的界面，可以返回不同的字段。优化用，默认返回所有字段", example = "user/index", position = 2000)
     @JsonProperty(value = "queryHelper")
     @JSONField(name = "queryHelper")
     public Object getQueryHelper() {
@@ -173,7 +173,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.queryHelper = queryHelper;
     }
 
-    @ApiModelProperty(value = "备用对象参数，前后端交互使用。(一般不用)", example = "{}")
+    @ApiModelProperty(value = "备用对象参数，前后端交互使用。(一般不用)", example = "{}", position = 2100)
     @JsonProperty(value = "otherParams")
     @JSONField(name = "otherParams")
     public Object getOtherParams() {
@@ -184,7 +184,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.otherParams = otherParams;
     }
 
-    @ApiModelProperty(value = "备用数组参数，前后端交互使用。(一般不用)", example = "[]")
+    @ApiModelProperty(value = "备用数组参数，前后端交互使用。(一般不用)", example = "[]", position = 2200)
     @JsonProperty(value = "otherListParams")
     @JSONField(name = "otherListParams")
     public List getOtherListParams() {
@@ -195,7 +195,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.otherListParams = otherListParams;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:当前页(分页查询条件)", example = "1")
+    @ApiModelProperty(value = "查询接口专用参数:当前页(分页查询条件)", example = "1", position = 3000)
     @JsonProperty(value = "start")
     @JSONField(name = "start")
     public Long getStart() {
@@ -206,7 +206,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.start = start;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:每页大小(分页查询条件)", example = "30")
+    @ApiModelProperty(value = "查询接口专用参数:每页大小(分页查询条件)", example = "30", position = 3100)
     @JsonProperty(value = "limit")
     @JSONField(name = "limit")
     public Long getLimit() {
@@ -217,7 +217,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.limit = limit;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:排序列(查询条件)", example = "age")
+    @ApiModelProperty(value = "查询接口专用参数:排序列(查询条件)", example = "age", position = 3200)
     @JsonProperty(value = "orderBy")
     @JSONField(name = "orderBy")
     public String getOrderBy() {
@@ -228,7 +228,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.orderBy = orderBy;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:排序列的排序方向(查询条件)(true:升序;false:降序)默认true", example = "true")
+    @ApiModelProperty(value = "查询接口专用参数:排序列的排序方向(查询条件)(true:升序;false:降序)默认true", example = "true", position = 3300)
     @JsonProperty(value = "ascFlag")
     @JSONField(name = "ascFlag")
     public Boolean getAscFlag() {
@@ -239,7 +239,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.ascFlag = ascFlag;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:开始时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00")
+    @ApiModelProperty(value = "查询接口专用参数:开始时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00", position = 3400)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "startTime")
@@ -252,7 +252,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.startTime = startTime;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:结束时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00")
+    @ApiModelProperty(value = "查询接口专用参数:结束时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00", position = 3500)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "endTime")
@@ -265,7 +265,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.endTime = endTime;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:开始日期(查询条件，日期格式 yyyy-MM-dd)", example = "1982-10-24")
+    @ApiModelProperty(value = "查询接口专用参数:开始日期(查询条件，日期格式 yyyy-MM-dd)", example = "1982-10-24", position = 3600)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @JsonProperty(value = "startDate")
@@ -278,7 +278,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         this.startDate = startDate;
     }
 
-    @ApiModelProperty(value = "查询接口专用参数:结束日期(查询条件，日期格式 yyyy-MM-dd)", example = "1982-10-24")
+    @ApiModelProperty(value = "查询接口专用参数:结束日期(查询条件，日期格式 yyyy-MM-dd)", example = "1982-10-24", position = 3700)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @JsonProperty(value = "endDate")
