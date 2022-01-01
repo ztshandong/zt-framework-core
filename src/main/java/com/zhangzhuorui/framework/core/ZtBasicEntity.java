@@ -49,13 +49,13 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
 
     //------------查询接口专用参数
 
-    private Date startTime;
+    private Date queryStartTime;
 
-    private Date endTime;
+    private Date queryEndTime;
 
-    private Date startDate;
+    private Date queryStartDate;
 
-    private Date endDate;
+    private Date queryEndDate;
 
     private Long start;
 
@@ -242,52 +242,52 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "查询接口专用参数:开始时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00", position = 3400)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @JsonProperty(value = "startTime")
-    @JSONField(name = "startTime", format = "yyyy-MM-dd HH:mm:ss")
-    public Date getStartTime() {
-        return startTime;
+    @JsonProperty(value = "queryStartTime")
+    @JSONField(name = "queryStartTime", format = "yyyy-MM-dd HH:mm:ss")
+    public Date getQueryStartTime() {
+        return queryStartTime;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setQueryStartTime(Date queryStartTime) {
+        this.queryStartTime = queryStartTime;
     }
 
     @ApiModelProperty(value = "查询接口专用参数:结束时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00", position = 3500)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @JsonProperty(value = "endTime")
-    @JSONField(name = "endTime", format = "yyyy-MM-dd HH:mm:ss")
-    public Date getEndTime() {
-        return endTime;
+    @JsonProperty(value = "queryEndTime")
+    @JSONField(name = "queryEndTime", format = "yyyy-MM-dd HH:mm:ss")
+    public Date getQueryEndTime() {
+        return queryEndTime;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setQueryEndTime(Date queryEndTime) {
+        this.queryEndTime = queryEndTime;
     }
 
     @ApiModelProperty(value = "查询接口专用参数:开始日期(查询条件，日期格式 yyyy-MM-dd)", example = "1982-10-24", position = 3600)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    @JsonProperty(value = "startDate")
-    @JSONField(name = "startDate", format = "yyyy-MM-dd")
-    public Date getStartDate() {
-        return startDate;
+    @JsonProperty(value = "queryStartDate")
+    @JSONField(name = "queryStartDate", format = "yyyy-MM-dd")
+    public Date getQueryStartDate() {
+        return queryStartDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setQueryStartDate(Date queryStartDate) {
+        this.queryStartDate = queryStartDate;
     }
 
     @ApiModelProperty(value = "查询接口专用参数:结束日期(查询条件，日期格式 yyyy-MM-dd)", example = "1982-10-24", position = 3700)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    @JsonProperty(value = "endDate")
-    @JSONField(name = "endDate", format = "yyyy-MM-dd")
-    public Date getEndDate() {
-        return endDate;
+    @JsonProperty(value = "queryEndDate")
+    @JSONField(name = "queryEndDate", format = "yyyy-MM-dd")
+    public Date getQueryEndDate() {
+        return queryEndDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setQueryEndDate(Date queryEndDate) {
+        this.queryEndDate = queryEndDate;
     }
 }
