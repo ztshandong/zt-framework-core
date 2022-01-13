@@ -127,7 +127,7 @@ public class ZtStrUtils {
             "}\n" +
             "a-a-a-a-";
 
-    public static final String SELECT_ID_SIMPLE_RES_SWAGGER_HTML = "<font color=\"#FF0000\">返回的整体结构统一如下，result.data对象与selectSimple或insertSimple接口入参entity一致:<br/>" +
+    public static final String SELECT_ID_SIMPLE_RES_SWAGGER_HTML = "<font color=\"#FF0000\">返回的整体结构统一如下，result.data对象与selectSimple(分页查询)或insertSimple(单条新增)接口入参entity一致:<br/>" +
             "{<br/>" +
             "\b \b \b \b \"result\":\b \b {<br/>" +
             "\b \b \b \b \b \b \b \b \"data\":\b \b {<br/>" +
@@ -141,7 +141,7 @@ public class ZtStrUtils {
             "\b \b \b \b \"success\":\b \b true<br/>" +
             "}</font>";
 
-    public static final String SELECT_ID_SIMPLE_RES_SWAGGER_PDF = "返回的整体结构统一如下，result.data对象与selectSimple或insertSimple接口入参entity一致:\n" +
+    public static final String SELECT_ID_SIMPLE_RES_SWAGGER_PDF = "返回的整体结构统一如下，result.data对象与selectSimple(分页查询)或insertSimple(单条新增)接口入参entity一致:\n" +
             "a-a-a-a-\n" +
             "{\n" +
             "  \b \b \b \b \"result\":\b \b {\n" +
@@ -157,7 +157,7 @@ public class ZtStrUtils {
             "}\n" +
             "a-a-a-a-";
 
-    public static final String SELECT_SIMPLE_RES_SWAGGER_HTML = "<font color=\"#FF0000\">返回的整体结构统一如下，result.data.results数组内对象结构与selectSimple或insertSimple接口入参entity一致:<br/>" +
+    public static final String SELECT_SIMPLE_RES_SWAGGER_HTML = "<font color=\"#FF0000\">返回的整体结构统一如下，result.data.results数组内对象结构与selectSimple(分页查询)或insertSimple(单条新增)接口入参entity一致:<br/>" +
             "{<br/>" +
             "\b \b \b \b \"result\":\b \b {<br/>" +
             "\b \b \b \b \b \b \b \b \"data\":\b \b {<br/>" +
@@ -176,7 +176,7 @@ public class ZtStrUtils {
             "\b \b \b \b \"success\":\b \b true<br/>" +
             "}</font>";
 
-    public static final String SELECT_SIMPLE_RES_SWAGGER_PDF = "返回的整体结构统一如下，result.data.results数组内对象结构与selectSimple或insertSimple接口入参entity一致:\n" +
+    public static final String SELECT_SIMPLE_RES_SWAGGER_PDF = "返回的整体结构统一如下，result.data.results数组内对象结构与selectSimple(分页查询)或insertSimple(单条新增)接口入参entity一致:\n" +
             "a-a-a-a-\n" +
             "{\n" +
             "\b \b \b \b \"result\":\b \b {\n" +
@@ -219,6 +219,7 @@ public class ZtStrUtils {
     public static final String SELECT_SIMPLE = DELEMITER + "selectSimple";
     public static final String SELECT_SIMPLE_ALL = DELEMITER + "selectSimpleAll";
     public static final String SELECT_ID_SIMPLE = DELEMITER + "selectIdSimple";
+    public static final String SELECT_ID_SIMPLE_BATCH = DELEMITER + "selectIdSimpleBatch";
     public static final String INSERT_SIMPLE = DELEMITER + "insertSimple";
     public static final String UPDATE_SIMPLE = DELEMITER + "updateSimple";
     public static final String DELETE_SIMPLE = DELEMITER + "deleteSimple";
