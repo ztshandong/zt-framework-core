@@ -31,6 +31,7 @@ public class ZtResBeanExConfig {
     private String start = "1";//start  current
     private String limit = "20";//limit  size
     private String maxPage = "1000";//默认最大每页1000条
+    private String noLimit = "100000";//分页不限数量
 
     public String getCode() {
         return code;
@@ -144,4 +145,11 @@ public class ZtResBeanExConfig {
         this.maxPage = maxPage;
     }
 
+    public String getNoLimit() {
+        return noLimit;
+    }
+
+    public void setNoLimit(String noLimit) {
+        this.noLimit = noLimit;
+    }
 }
