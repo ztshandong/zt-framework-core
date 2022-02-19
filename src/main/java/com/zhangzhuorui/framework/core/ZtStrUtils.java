@@ -220,6 +220,7 @@ public class ZtStrUtils {
     public static final String SELECT_SIMPLE_ALL = DELEMITER + "selectSimpleAll";
     public static final String SELECT_ID_SIMPLE = DELEMITER + "selectIdSimple";
     public static final String SELECT_ID_SIMPLE_BATCH = DELEMITER + "selectIdSimpleBatch";
+    public static final String SELECT_ONE_FIELD_SIMPLE_BATCH = DELEMITER + "selectOneFieldSimpleBatch";
     public static final String INSERT_SIMPLE = DELEMITER + "insertSimple";
     public static final String UPDATE_SIMPLE = DELEMITER + "updateSimple";
     public static final String DELETE_SIMPLE = DELEMITER + "deleteSimple";
