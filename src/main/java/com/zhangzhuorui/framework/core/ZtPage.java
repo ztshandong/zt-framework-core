@@ -26,7 +26,7 @@ public class ZtPage<T> implements Serializable {
         this.total = total;
     }
 
-    public long getTotal() {
+    public Integer getTotal() {
         return this.total;
     }
 
