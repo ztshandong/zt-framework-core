@@ -14,18 +14,9 @@ import java.util.Optional;
  * @updateDate :
  * @updateRemark :
  */
-public interface IZtBaseEnum<E extends Enum<E>> {
+public interface IZtBaseEnum<E extends Enum<E>> extends IZtSimpleBaseEnum<E> {
 
     Integer getIntValue();
-
-    String getStrValue();
-
-    static <T extends Enum<T> & IZtBaseEnum<T>> IZtBaseEnum<T> getIZtBaseEnumByStrValue(Class<T> opEnumType, String strValue) {
-        T[] enumConstants = opEnumType.getEnumConstants();
-        System.out.println(JSON.toJSONString(enumConstants));
-        Optional<T> any = Arrays.stream(enumConstants).filter(t -> t.getStrValue().equals(strValue)).findAny();
-        return any.orElse(null);
-    }
 
     static <T extends Enum<T> & IZtBaseEnum<T>> IZtBaseEnum<T> getIZtBaseEnumByIntValue(Class<T> opEnumType, Integer intValue) {
         T[] enumConstants = opEnumType.getEnumConstants();
