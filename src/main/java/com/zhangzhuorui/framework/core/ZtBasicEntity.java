@@ -3,6 +3,7 @@ package com.zhangzhuorui.framework.core;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -70,6 +71,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "gmtCreate")
     @JSONField(name = "gmtCreate", format = "yyyy-MM-dd HH:mm:ss")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -81,6 +83,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "创建人账号(不用传,根据token获取)", example = "zhangsan", position = 1100)
     @JsonProperty(value = "createdBy")
     @JSONField(name = "createdBy")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getCreatedBy() {
         return createdBy;
     }
@@ -92,6 +95,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "创建人姓名(不用传,根据token获取)", example = "张三", position = 1200)
     @JsonProperty(value = "createdByName")
     @JSONField(name = "createdByName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getCreatedByName() {
         return createdByName;
     }
@@ -105,6 +109,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "gmtUpdate")
     @JSONField(name = "gmtUpdate", format = "yyyy-MM-dd HH:mm:ss")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Date getGmtUpdate() {
         return gmtUpdate;
     }
@@ -116,6 +121,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "修改人账号(不用传,根据token获取)", example = "zhangsan", position = 1400)
     @JsonProperty(value = "updatedBy")
     @JSONField(name = "updatedBy")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getUpdatedBy() {
         return updatedBy;
     }
@@ -127,6 +133,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "修改人姓名(不用传,根据token获取)", example = "张三", position = 1500)
     @JsonProperty(value = "updatedByName")
     @JSONField(name = "updatedByName")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getUpdatedByName() {
         return updatedByName;
     }
@@ -138,6 +145,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "备注", example = "天行健，君子以自强不息", position = 1600)
     @JsonProperty(value = "remark")
     @JSONField(name = "remark")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getRemark() {
         return remark;
     }
@@ -165,6 +173,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "不同的界面，可以返回不同的字段。优化用，默认返回所有字段", example = "user/index", position = 2000)
     @JsonProperty(value = "queryHelper")
     @JSONField(name = "queryHelper")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Object getQueryHelper() {
         return queryHelper;
     }
@@ -176,6 +185,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "备用对象参数，前后端交互使用。(一般不用)", example = "{}", position = 2100)
     @JsonProperty(value = "otherParams")
     @JSONField(name = "otherParams")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Object getOtherParams() {
         return otherParams;
     }
@@ -187,6 +197,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "备用数组参数，前后端交互使用。(一般不用)", example = "[]", position = 2200)
     @JsonProperty(value = "otherListParams")
     @JSONField(name = "otherListParams")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List getOtherListParams() {
         return otherListParams;
     }
@@ -198,6 +209,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "查询接口专用参数:当前页(分页查询条件)", example = "1", position = 3000)
     @JsonProperty(value = "start")
     @JSONField(name = "start")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getStart() {
         return start;
     }
@@ -209,6 +221,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "查询接口专用参数:每页大小(分页查询条件)", example = "30", position = 3100)
     @JsonProperty(value = "limit")
     @JSONField(name = "limit")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getLimit() {
         return limit;
     }
@@ -220,6 +233,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "查询接口专用参数:排序列(查询条件)", example = "age", position = 3200)
     @JsonProperty(value = "orderBy")
     @JSONField(name = "orderBy")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getOrderBy() {
         return orderBy;
     }
@@ -231,6 +245,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @ApiModelProperty(value = "查询接口专用参数:排序列的排序方向(查询条件)(true:升序;false:降序)默认true", example = "true", position = 3300)
     @JsonProperty(value = "ascFlag")
     @JSONField(name = "ascFlag")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Boolean getAscFlag() {
         return ascFlag;
     }
@@ -244,6 +259,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "queryStartTime")
     @JSONField(name = "queryStartTime", format = "yyyy-MM-dd HH:mm:ss")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Date getQueryStartTime() {
         return queryStartTime;
     }
@@ -257,6 +273,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty(value = "queryEndTime")
     @JSONField(name = "queryEndTime", format = "yyyy-MM-dd HH:mm:ss")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Date getQueryEndTime() {
         return queryEndTime;
     }
@@ -270,6 +287,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @JsonProperty(value = "queryStartDate")
     @JSONField(name = "queryStartDate", format = "yyyy-MM-dd")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Date getQueryStartDate() {
         return queryStartDate;
     }
@@ -283,6 +301,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     @JsonProperty(value = "queryEndDate")
     @JSONField(name = "queryEndDate", format = "yyyy-MM-dd")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Date getQueryEndDate() {
         return queryEndDate;
     }
