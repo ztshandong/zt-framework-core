@@ -45,6 +45,9 @@ public class ZtStrUtils {
     public static final String VERSION_FIELD_NAME = "version";
     public static final String VERSION_COLUMN_NAME = "version";
 
+    //快速组装 IN ( ? ) 的SQL。字段名后缀如果是这个，就会用IN
+    public static final String LIST_VALUE_SUFFIX = "ListValue";
+
     //region swagger相关
 
     public static final String NORMAL_RES_SWAGGER_HTML = "<font color=\"#FF0000\">项目统一返回格式<br/>{<br/>" +
