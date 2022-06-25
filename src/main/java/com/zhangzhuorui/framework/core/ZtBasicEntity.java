@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 import springfox.documentation.annotations.ApiIgnore;
@@ -76,6 +77,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         return gmtCreate;
     }
 
+    @JsonDeserialize(using = ZtDateDeserializer.class)
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
     }
@@ -114,6 +116,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         return gmtUpdate;
     }
 
+    @JsonDeserialize(using = ZtDateDeserializer.class)
     public void setGmtUpdate(Date gmtUpdate) {
         this.gmtUpdate = gmtUpdate;
     }
@@ -264,6 +267,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         return queryStartTime;
     }
 
+    @JsonDeserialize(using = ZtDateDeserializer.class)
     public void setQueryStartTime(Date queryStartTime) {
         this.queryStartTime = queryStartTime;
     }
@@ -278,6 +282,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         return queryEndTime;
     }
 
+    @JsonDeserialize(using = ZtDateDeserializer.class)
     public void setQueryEndTime(Date queryEndTime) {
         this.queryEndTime = queryEndTime;
     }
@@ -292,6 +297,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         return queryStartDate;
     }
 
+    @JsonDeserialize(using = ZtDateDeserializer.class)
     public void setQueryStartDate(Date queryStartDate) {
         this.queryStartDate = queryStartDate;
     }
@@ -306,6 +312,7 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
         return queryEndDate;
     }
 
+    @JsonDeserialize(using = ZtDateDeserializer.class)
     public void setQueryEndDate(Date queryEndDate) {
         this.queryEndDate = queryEndDate;
     }
