@@ -67,6 +67,8 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
 
     private Boolean ascFlag;
 
+    private Boolean chineseFlag;
+
     @ApiModelProperty(value = "创建时间(不用传,后台自动生成)", example = "1982-10-24 20:48:00", position = 1000)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -255,6 +257,18 @@ public class ZtBasicEntity<T extends Serializable> extends ZtBasicIdEntity<T> {
 
     public void setAscFlag(Boolean ascFlag) {
         this.ascFlag = ascFlag;
+    }
+
+    @ApiModelProperty(value = "查询接口专用参数:排序列是否是中文", example = "false", position = 3400)
+    @JsonProperty(value = "chineseFlag")
+    @JSONField(name = "chineseFlag")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Boolean getChineseFlag() {
+        return chineseFlag;
+    }
+
+    public void setChineseFlag(Boolean chineseFlag) {
+        this.chineseFlag = chineseFlag;
     }
 
     @ApiModelProperty(value = "查询接口专用参数:开始时间(查询条件，时间格式，精确到秒 yyyy-MM-dd HH:mm:ss)", example = "1982-10-24 20:48:00", position = 3400)
